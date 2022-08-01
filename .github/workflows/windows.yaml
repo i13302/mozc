@@ -20,8 +20,8 @@ jobs:
       - name: ls qt
         shell: powershell
         run: |
-          mkdir C:\temp-qt
-          wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip -OutFile C:\temp-qt
+          mkdir .\temp-qt
+          wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip -OutFile .\temp-qt
     
     
       # - name: config
