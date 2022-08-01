@@ -16,23 +16,21 @@ jobs:
     timeout-minutes: 60
 
     steps:
-    
+      - name: config
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
       - name: ls qt
         shell: powershell
         run: |
           mkdir .\temp-qt
           wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip -OutFile .\temp-qt
-    
-    
-      # - name: config
-      #   run: |
-      #     git config --global core.autocrlf false
-      #     git config --global core.eol lf
-
-      # - name: checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #     submodules: 'recursive'
 
       # - name: setup
       #   shell: cmd
@@ -42,10 +40,6 @@ jobs:
       #     cd ..\abseil-cpp
       #     git apply ..\..\base\absl.patch
       #     python3 -m pip install six
-
-          
-      
-        
 
       # - name: build
       #   shell: cmd
