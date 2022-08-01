@@ -35,9 +35,12 @@ jobs:
           git apply ..\..\base\absl.patch
           python3 -m pip install six
 
-      - name: mkdir
+      - name: ls qt
         shell: cmd
-        run: mkdir release
+        run: |
+          cd C:\Qt
+          dir
+        
 
       - name: build
         shell: cmd
