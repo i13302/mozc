@@ -16,6 +16,13 @@ jobs:
     timeout-minutes: 60
 
     steps:
+    
+      - name: ls qt
+        shell: bash
+        run: |
+          wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip
+    
+    
       - name: config
         run: |
           git config --global core.autocrlf false
@@ -35,26 +42,23 @@ jobs:
           git apply ..\..\base\absl.patch
           python3 -m pip install six
 
-      - name: ls qt
-        shell: cmd
-        run: |
-          cd C:\Qt
-          dir
+          
+      
         
 
-      - name: build
-        shell: cmd
-        working-directory: .\src
-        run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
-          python build_mozc.py gyp --noqt --msvs_version=2019
-          python build_mozc.py build -c Release package
+      # - name: build
+      #   shell: cmd
+      #   working-directory: .\src
+      #   run: |
+      #     call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
+      #     python build_mozc.py gyp --noqt --msvs_version=2019
+      #     python build_mozc.py build -c Release package
 
-      - name: Set DATE
-        run: echo "DATE=$(date '+%Y%m%d')" >> $GITHUB_ENV
+      # - name: Set DATE
+      #   run: echo "DATE=$(date '+%Y%m%d')" >> $GITHUB_ENV
 
-      - name: Upload Release dir.
-        uses: actions/upload-artifact@master
-        with:
-          name: Release-${{ env.DATE }}
-          path: .\src\out_win\
+      # - name: Upload Release dir.
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: Release-${{ env.DATE }}
+      #     path: .\src\out_win\
