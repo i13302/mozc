@@ -18,29 +18,30 @@ jobs:
     steps:
     
       - name: ls qt
-        shell: bash
-        run: |
-          wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip
-    
-    
-      - name: config
-        run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
-
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
-
-      - name: setup
         shell: cmd
-        working-directory: .\src\third_party
         run: |
-          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-          cd ..\abseil-cpp
-          git apply ..\..\base\absl.patch
-          python3 -m pip install six
+          mkdir C:\temp
+          wget https://download.qt.io/archive/qt/6.3/6.3.1/single/qt-everywhere-src-6.3.1.zip -OutFile C:\temp
+    
+    
+      # - name: config
+      #   run: |
+      #     git config --global core.autocrlf false
+      #     git config --global core.eol lf
+
+      # - name: checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     submodules: 'recursive'
+
+      # - name: setup
+      #   shell: cmd
+      #   working-directory: .\src\third_party
+      #   run: |
+      #     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+      #     cd ..\abseil-cpp
+      #     git apply ..\..\base\absl.patch
+      #     python3 -m pip install six
 
           
       
