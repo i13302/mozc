@@ -20,7 +20,7 @@ copy out_win\Release_x64\mozc_broker64.exe         "%ProgramFiles(x86)%\Mozc"
 
 echo 'Register Mozc for IMM32 into 64-bit environment
 copy out_win\Release_x64\mozc_ja.ime               "%windir%\System32"
-copy out_win\Release\mozc_ja.im                    "%windir%\SysWOW64"
+copy out_win\Release\mozc_ja.ime                   "%windir%\SysWOW64"
 
 "%ProgramFiles(x86)%\Mozc\mozc_broker64.exe" --mode=register_ime
 
