@@ -35,10 +35,6 @@ jobs:
           git apply ..\..\base\absl.patch
           python3 -m pip install six
 
-      - name: mkdir
-        shell: cmd
-        run: mkdir release
-
       - name: build
         shell: cmd
         working-directory: .\src
@@ -46,12 +42,3 @@ jobs:
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
           python build_mozc.py gyp --noqt --msvs_version=2019
           python build_mozc.py build -c Release package
-
-      - name: Set DATE
-        run: echo "DATE=$(date '+%Y%m%d')" >> $GITHUB_ENV
-
-      - name: Upload Release dir.
-        uses: actions/upload-artifact@master
-        with:
-          name: Release-${{ env.DATE }}
-          path: .\src\out_win\
